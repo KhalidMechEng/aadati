@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>عاداتي — متتبع العادات اليومية</title>
+  <!-- دعم التثبيت على شاشة التلفون -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#ff5a3c" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="عاداتي" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="icon" href="icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- الشريط العلوي -->
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-icon">🌱</span>
+        <div>
+          <h1>عـاداتـي</h1>
+          <p id="todayDate" class="today-date"></p>
+        </div>
+      </div>
+      <nav class="tabs">
+        <button class="tab active" data-page="habits">العادات</button>
+        <button class="tab" data-page="dashboard">لوحة التحكم</button>
+      </nav>
+    </header>
+
+    <!-- ========== الصفحة الأولى: العادات ========== -->
+    <main id="page-habits" class="page active">
+      <!-- مهام الغد -->
+      <section class="card tasks-card">
+        <div class="progress-head">
+          <h2>مـهام الـغد ✍️</h2>
+          <span id="tasksDate" class="muted"></span>
+        </div>
+        <form id="taskForm" class="task-form">
+          <input id="taskInput" type="text" placeholder="اكتب مهمة لغدٍ ثم اضغط إضافة..." maxlength="120" autocomplete="off" />
+          <button type="submit" class="btn-add">إضافة</button>
+        </form>
+        <ul id="tasksList" class="tasks-list"><!-- تُبنى بالجافاسكربت --></ul>
+        <p id="tasksEmpty" class="empty-hint">لا توجد مهام لغدٍ بعد. أضف أول مهمة!</p>
+      </section>
+
+      <section class="card progress-card">
+        <div class="progress-head">
+          <h2>عـادات الـيوم</h2>
+          <span id="habitsCount" class="pill">0 / 5</span>
+        </div>
+        <div class="progress-track">
+          <div id="habitsBar" class="progress-fill"></div>
+        </div>
+      </section>
+
+      <section class="habits-list" id="habitsList"><!-- تُبنى بالجافاسكربت --></section>
+    </main>
+
+    <!-- ========== الصفحة الثانية: لوحة التحكم ========== -->
+    <main id="page-dashboard" class="page">
+      <section class="streak-card">
+        <div class="flame" id="flame">🔥</div>
+        <div class="streak-num" id="streakNum">0</div>
+        <div class="streak-label">يـوم مـتتالٍ مـن الـإنجاز</div>
+        <div class="streak-best">أطول سلسلة: <b id="bestStreak">0</b> يوم</div>
+      </section>
+
+      <section class="ring-card card">
+        <h2>مـؤشر عـادات الـيوم</h2>
+        <div class="ring-wrap">
+          <svg viewBox="0 0 120 120" class="ring">
+            <circle class="ring-bg" cx="60" cy="60" r="52" />
+            <circle id="ringFill" class="ring-fg" cx="60" cy="60" r="52" />
+          </svg>
+          <div class="ring-center">
+            <span id="ringPercent">0%</span>
+            <small>مكتمل</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats-grid">
+        <div class="stat card">
+          <div class="stat-num" id="statToday">0</div>
+          <div class="stat-label">عادات اليوم</div>
+        </div>
+        <div class="stat card">
+          <div class="stat-num" id="statWeek">0</div>
+          <div class="stat-label">إنجازات هذا الأسبوع</div>
+        </div>
+        <div class="stat card">
+          <div class="stat-num" id="statTotal">0</div>
+          <div class="stat-label">إجمالي الإنجازات</div>
+        </div>
+      </section>
+
+      <section class="card week-card">
+        <h2>آخـر 7 أيـام</h2>
+        <div class="week-bars" id="weekBars"><!-- تُبنى بالجافاسكربت --></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

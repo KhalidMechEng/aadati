@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(open \"/Users/khalidal-shaqsi/Desktop/تطبيق عاداتي/index.html\")",
+      "Bash(git add *)",
+      "Bash(git -c user.name=\"Habits App\" -c user.email=\"ooaa.200170@gmail.com\" commit -q -m \"أول نسخة: تطبيق عاداتي \\(متتبع العادات اليومية\\)\")"
+    ]
+  }
+}
